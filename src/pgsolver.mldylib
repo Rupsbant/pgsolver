@@ -14,6 +14,7 @@ paritygame/Specialsolve
 paritygame/Transformations
 solvers/Bigstep
 solvers/Dominiondecomp
+solvers/Externalsolver
 solvers/Fpiter
 solvers/Genetic
 solvers/Guessstrategy
