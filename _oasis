@@ -16,7 +16,7 @@ Plugins:     META (0.4)
 BuildTools: ocamlbuild
 Library "pgsolver"
   Path:       src
-  BuildDepends: num, str, TCSLib, extlib, ocaml-sat-solvers, minisat, unix
+  BuildDepends: num, str, TCSLib, extlib, ocaml-sat-solvers, minisat, unix, threads
   Modules: pgsolver/Basics, pgsolver/Info,
            paritygame/Paritygame, paritygame/Verification, paritygame/Univsolve, paritygame/Solvers,
            paritygame/Solverregistry, paritygame/Mdp, paritygame/Paritygamebitset, paritygame/Parsers,
@@ -36,7 +36,7 @@ Library "pgsolver"
            generators/Randomgame, generators/Laddergame, generators/Clusteredrandomgame, generators/Cliquegame,
            generators/Modelcheckerladder, generators/Recursiveladder, generators/Steadygame, generators/Jurdzinskigame,
            generators/modelchecking/Mucalculus,
-           generators/modelchecking/Elevators, generators/modelchecking/Roadworks, 
+           generators/modelchecking/Elevators, generators/modelchecking/Roadworks,
            generators/Towersofhanoi, generators/Langincl,
            generators/Recursivedullgame,
            generators/policyiter/Stratimprgen, generators/policyiter/Stratimprgenerators,

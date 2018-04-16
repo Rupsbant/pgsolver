@@ -24,7 +24,7 @@ struct
   		| YesVerifier of (paritygame -> solution -> strategy -> (node list * string) option)
 
   let solver = ref NoSolver
-  
+
   let generator = ref NoGenerator
 
   let solonly = ref false
@@ -41,8 +41,8 @@ struct
   let parse_sol = ref ""
 
   let solving = ref true
-  
-  let initnode = ref 0 
+
+  let initnode = ref 0
 
   let verifier = ref NoVerifier
 
@@ -55,7 +55,7 @@ struct
   let set_input_file f = input_file := f
 
   let satsolv = Satsolvers.get_list ()
-  
+
   let solveargs = ref ""
 
 (*  let perform_sanity_check = ref false *)
@@ -123,11 +123,11 @@ struct
                       "\n     output information about all available solvers");
                    (["--globallysolve"; "-global"], String (fun s -> let (solve, _, _) = find_solver s in solver := YesSolver (s, solve)),
                      "<solver>\n     solves globally, valid solvers are" ^
-                     fold_solvers (fun _ ident _ _ t -> t ^ " " ^ ident) ""); 
+                     fold_solvers (fun _ ident _ _ t -> t ^ " " ^ ident) "");
                    (["--locallysolve"; "-local"], Tuple [String (fun s -> let (solve, _, _) = find_partial_solver s in solver := LocalSolver (s, solve));
                                                         Int (fun i -> initnode := i)],
                      "<solver> <node>\n     solves locally, valid solvers are" ^
-                     fold_partial_solvers (fun _ ident _ _ t -> t ^ " " ^ ident) ""); 
+                     fold_partial_solvers (fun _ ident _ _ t -> t ^ " " ^ ident) "");
                    (["--args"; "-x"], String(fun s -> solveargs := s),
                       "\n     pass args to the solver (write '-x \"--help\"' to learn about available args (if there are any))")]
                       @
@@ -177,7 +177,7 @@ let _ =
   )
 
   else
-  
+
   (
   let game = match !generator with
 
@@ -209,7 +209,7 @@ let _ =
 	  game
     )
   in
-  
+
   flush stdout;
   Gc.compact ();
 
@@ -241,8 +241,8 @@ let _ =
 			| YesSolver(id,solve) -> message 1 (fun _ -> "Chosen solver `" ^ id ^ "' " ^
 												String.make (22 - (String.length id)) '.' ^ " ");
 									 let timobj = SimpleTiming.init true in
-									 let result = solve (Array.of_list (Tcsstrings.StringUtils.explode !solveargs ' ')) game in
-									 SimpleTiming.stop timobj;
+                   let result = solve (Array.of_list (Tcsstrings.StringUtils.explode !solveargs ' ')) game in
+                   SimpleTiming.stop timobj;
 									 message 1 (fun _ -> (SimpleTiming.format timobj) ^ "\n");
 									 if SimpleTiming.read timobj > 10.0
 									 then message 1 (fun _ -> "\nOh, and by the way: " ^ someone () ^
